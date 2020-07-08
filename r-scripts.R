@@ -1,4 +1,3 @@
-setwd("C:/Users/sc064997/R-Programming/wrkdir/PersonalComputerPrices")
 data <- read.csv("dataset_price_personal_computers.csv")
 head(data)
 View(data)

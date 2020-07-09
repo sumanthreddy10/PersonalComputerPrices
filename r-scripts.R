@@ -4,6 +4,7 @@ head(ppcdata)
 View(ppcdata)
 #1.Create a summary of stats for the dataset.
 summary(ppcdata)
+summary(ppcdatatrans)
 
 
 #2.Create a correlation of stats for the ppcdataset. (provide a screen shot) (Hint: Transform may be needed)
@@ -23,6 +24,15 @@ cor(ppcdatatrans)
 
 #3.What is the Min, Max, Median, and Mean of the Price?
 summary(c(ppcdatatrans$price))
+
+#It can also be shown individually
+min(ppcdatatrans$price)
+max(ppcdatatrans$price)
+median(ppcdatatrans$price)
+mean(ppcdatatrans$price)
+
+#Or can be shown using favstats command like below
+favstats(~price, data = ppcdatatrans)
 
 #4.What is the correlation values between Price, Ram, and Ads?
 cor(ppcdatatrans[c("price","ram", "ads")])
@@ -49,6 +59,8 @@ library(mosaic)
 
 tally(~premium, data = ppcdatatrans, margins = TRUE, format = "perc")
 
-#8.How many Premium computers with CDs were sold? (provide a screen shot)(Hint: Contingency table analysis)
-#9.How many Premium computers with CDs priced over $2000 were sold? (provide a screen shot)(Hint: Conditional table analysis)
+#8.How many Premium computers with CDs were sold? (Hint: Contingency table analysis)
+tally(~premium+cd, data = ppcdatatrans, margins = TRUE)
 
+#9.How many Premium computers with CDs priced over $2000 were sold? (Hint: Conditional table analysis)
+tally(~premium+cd|price>2000, data = ppcdatatrans, margins = TRUE)
